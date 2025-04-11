@@ -1,0 +1,5 @@
+service:
+  port: "8080"
+
+database:
+  dataSourceName: "postgres://admin:root@localhost:5432/musicCatalog_db?sslmode=disable"
