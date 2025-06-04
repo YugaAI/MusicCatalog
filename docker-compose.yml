@@ -11,4 +11,4 @@ services:
       POSTGRES_DB: musicCatalog_db
 
     volumes:
-      - G:\FastcCampus\MusicCatalog\MusicCatalog\db:/var/lib/postgresql/data
+      - G:/FastcCampus/MusicCatalog/MusicCatalog/db:/var/lib/postgresql/data

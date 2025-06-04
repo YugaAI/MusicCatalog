@@ -3,3 +3,8 @@ service:
 
 database:
   dataSourceName: "postgres://admin:root@localhost:5432/musicCatalog_db?sslmode=disable"
+
+spotifyConfig:
+  clientID: "fd302b39b00e430c88d4af96aa2cd5b8"
+  clientSecret: "07ae1067d3e4424ab01350855194c70a"
+  redirectURI: "http://localhost:9999/callback"
