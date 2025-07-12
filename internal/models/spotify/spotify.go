@@ -21,4 +21,5 @@ type SpotifyTrackObject struct {
 	Explicit bool   `json:"explicit"` // Assuming Explicit is a boolean indicating if the track is explicit
 	ID       string `json:"id"`       // ID of the track
 	Name     string `json:"name"`     // Name of the track
+	IsLiked  bool   `json:"isLiked"`  // true=like, false=islike, null=neutral
 }

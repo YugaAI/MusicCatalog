@@ -131,7 +131,7 @@ func TestRepository_GetUserByID(t *testing.T) {
 		mockFn  func(args args)
 	}{
 		{
-			name: "Success",
+			name: "Error",
 			args: args{
 				email:    "test@gmail.com",
 				username: "testuser",
@@ -146,7 +146,7 @@ func TestRepository_GetUserByID(t *testing.T) {
 			},
 		},
 		{
-			name: "Error",
+			name: "Success",
 			args: args{
 				email:    "test@gmail.com",
 				username: "testuser",

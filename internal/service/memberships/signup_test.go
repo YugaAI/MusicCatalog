@@ -5,8 +5,8 @@ import (
 
 	"github.com/YugaAI/MusicCatalog/internal/configs"
 	"github.com/YugaAI/MusicCatalog/internal/models/memberships"
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/mock/gomock"
 	"gorm.io/gorm"
 )
 

@@ -14,7 +14,7 @@ import (
 	"github.com/YugaAI/MusicCatalog/internal/configs"
 	"github.com/YugaAI/MusicCatalog/pkg/httpclient"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/mock/gomock"
+	"github.com/golang/mock/gomock" 
 )
 
 func Test_outbound_Search(t *testing.T) {

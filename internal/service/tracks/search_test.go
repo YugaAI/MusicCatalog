@@ -6,9 +6,10 @@ import (
 	"testing"
 
 	"github.com/YugaAI/MusicCatalog/internal/models/spotify"
+	"github.com/YugaAI/MusicCatalog/internal/models/trackactivities"
 	spotifyRepo "github.com/YugaAI/MusicCatalog/internal/repository/spotify"
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-	"go.uber.org/mock/gomock"
 )
 
 func Test_service_Search(t *testing.T) {
@@ -16,9 +17,13 @@ func Test_service_Search(t *testing.T) {
 	defer mockCtrl.Finish()
 
 	mockSpotifyOutbound := NewMockSpotifyOutbound(mockCtrl)
+	mockTracksActivityRepo := NewMockTracksActivityRepository(mockCtrl)
+
 	next := "https://api.spotify.com/v1/search?offset=11&limit=10&query=bohemian%20rhapsody&type=track&market=ID&locale=id,en-US;q%3D0.9,en;q%3D0.8"
 	previous := "https://api.spotify.com/v1/search?offset=0&limit=10&query=bohemian%20rhapsody&type=track&market=ID&locale=id,en-US;q%3D0.9,en;q%3D0.8"
 
+	isLikeTrue := true
+	isLikeFalse := false
 	type args struct {
 		query     string
 		pageSize  int
@@ -59,6 +64,7 @@ func Test_service_Search(t *testing.T) {
 						Explicit: false,
 						ID:       "3z8h0TU7ReDPLIbEnYhWZb",
 						Name:     "Bohemian Rhapsody",
+						IsLiked:  isLikeTrue,
 					},
 					{
 						AlbumType:        "compilation",
@@ -77,6 +83,7 @@ func Test_service_Search(t *testing.T) {
 						Explicit: false,
 						ID:       "2OBofMJx94NryV2SK8p8Zf",
 						Name:     "Bohemian Rhapsody - Remastered 2011",
+						IsLiked:  isLikeFalse,
 					},
 				},
 				Total: 23,
@@ -153,6 +160,14 @@ func Test_service_Search(t *testing.T) {
 							},
 						},
 					}, nil)
+				mockTracksActivityRepo.EXPECT().GetBulkSpotifyID(gomock.Any(), uint(1), []string{"3z8h0TU7ReDPLIbEnYhWZb", "2OBofMJx94NryV2SK8p8Zf"}).Return(map[string]trackactivities.TrackActivities{
+					"3z8h0TU7ReDPLIbEnYhWZb": {
+						IsLiked: isLikeTrue,
+					},
+					"2OBofMJx94NryV2SK8p8Zf": {
+						IsLiked: isLikeFalse,
+					},
+				}, nil)
 			},
 		},
 		{
@@ -175,9 +190,10 @@ func Test_service_Search(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			tt.mockFn(tt.args)
 			s := &service{
-				spotifyOutbound: mockSpotifyOutbound,
+				spotifyOutbound:   mockSpotifyOutbound,
+				trackAktivityRepo: mockTracksActivityRepo,
 			}
-			got, err := s.Search(context.Background(), tt.args.query, tt.args.pageSize, tt.args.pageIndex)
+			got, err := s.Search(context.Background(), tt.args.query, tt.args.pageSize, tt.args.pageIndex, 1)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("service.Search() error = %v, wantErr %v", err, tt.wantErr)
 				return

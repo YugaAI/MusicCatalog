@@ -26,7 +26,7 @@ func (s *Service) Login(request memberships.LoginRequest) (string, error) {
 		return "", errors.New("Email and password Not matched")
 	}
 
-	accessToken, err := jwt.CreateToken(uint(userDetail.ID), userDetail.Username, s.cfg.Service.SecretKey)
+	accessToken, err := jwt.CreateToken(userDetail.ID, userDetail.Username, s.cfg.Service.SecretKey)
 	if err != nil {
 		log.Error().Err(err).Msg("Error creating JWT token")
 		return "", err
