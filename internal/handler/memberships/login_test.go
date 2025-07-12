@@ -10,7 +10,7 @@ import (
 	"github.com/YugaAI/MusicCatalog/internal/models/memberships"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	gomock "go.uber.org/mock/gomock"
+	gomock "github.com/golang/mock/gomock" 
 )
 
 func TestHandler_Login(t *testing.T) {

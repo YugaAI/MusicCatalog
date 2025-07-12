@@ -23,9 +23,10 @@ func (h *Handler) Search(c *gin.Context) {
 		pageIndex = 1 // Default page index
 	}
 
-	response, err := h.service.Search(ctx, query, pageSize, pageIndex)
+	userID := c.GetUint("userID")
+	response, err := h.service.Search(ctx, query, pageSize, pageIndex, userID)
 	if err != nil {
-		c.JSON(500, gin.H{"error": "Failed to search tracks"})
+		c.JSON(400, gin.H{"error": "Failed to search tracks"})
 		return
 	}
 	c.JSON(200, response)

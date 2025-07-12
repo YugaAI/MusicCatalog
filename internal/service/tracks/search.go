@@ -4,11 +4,12 @@ import (
 	"context"
 
 	"github.com/YugaAI/MusicCatalog/internal/models/spotify"
+	"github.com/YugaAI/MusicCatalog/internal/models/trackactivities"
 	spotifyRepo "github.com/YugaAI/MusicCatalog/internal/repository/spotify"
 	"github.com/rs/zerolog/log"
 )
 
-func (s *service) Search(ctx context.Context, query string, pageSize, pageIndex int) (*spotify.SearchResponse, error) {
+func (s *service) Search(ctx context.Context, query string, pageSize, pageIndex int, userID uint) (*spotify.SearchResponse, error) {
 	limit := pageSize
 	offsite := (pageIndex - 1) * pageSize
 
@@ -17,10 +18,22 @@ func (s *service) Search(ctx context.Context, query string, pageSize, pageIndex 
 		log.Error().Err(err).Msg("failed to search tracks on spotify")
 		return nil, err
 	}
-	return modelToResponse(trackDetail), nil
+
+	trackIDs := make([]string, len(trackDetail.Tracks.Items))
+	for idx, item := range trackDetail.Tracks.Items {
+		trackIDs[idx] = item.ID
+	}
+
+	tracksActivities, err := s.trackAktivityRepo.GetBulkSpotifyID(ctx, userID, trackIDs)
+	if err != nil {
+		log.Error().Err(err).Msg("failed get tracks activity from database")
+		return nil, err
+	}
+
+	return modelToResponse(trackDetail, tracksActivities), nil
 }
 
-func modelToResponse(data *spotifyRepo.SpotifySearchResponse) *spotify.SearchResponse {
+func modelToResponse(data *spotifyRepo.SpotifySearchResponse, mapTrackActivity map[string]trackactivities.TrackActivities) *spotify.SearchResponse {
 	if data == nil {
 		return nil
 	}
@@ -51,6 +64,7 @@ func modelToResponse(data *spotifyRepo.SpotifySearchResponse) *spotify.SearchRes
 			Explicit: item.Explicit,
 			ID:       item.ID,
 			Name:     item.Name,
+			IsLiked:  mapTrackActivity[item.ID].IsLiked, // true=like, false=islike, null=neutral
 		})
 	}
 	return &spotify.SearchResponse{

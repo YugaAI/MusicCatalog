@@ -10,7 +10,6 @@ require (
 	github.com/rs/zerolog v1.34.0
 	github.com/spf13/viper v1.20.1
 	github.com/stretchr/testify v1.10.0
-	go.uber.org/mock v0.5.1
 	golang.org/x/crypto v0.33.0
 	gorm.io/driver/postgres v1.5.11
 	gorm.io/gorm v1.25.12

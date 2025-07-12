@@ -8,8 +8,10 @@ import (
 	membershipsHandler "github.com/YugaAI/MusicCatalog/internal/handler/memberships"
 	tracksHandler "github.com/YugaAI/MusicCatalog/internal/handler/tracks"
 	"github.com/YugaAI/MusicCatalog/internal/models/memberships"
+	"github.com/YugaAI/MusicCatalog/internal/models/trackactivities"
 	membershipsRepo "github.com/YugaAI/MusicCatalog/internal/repository/memberships"
 	"github.com/YugaAI/MusicCatalog/internal/repository/spotify"
+	trackActivitiesRepo "github.com/YugaAI/MusicCatalog/internal/repository/trackactivities"
 	membershipsSvc "github.com/YugaAI/MusicCatalog/internal/service/memberships"
 	"github.com/YugaAI/MusicCatalog/internal/service/tracks"
 	"github.com/YugaAI/MusicCatalog/pkg/httpclient"
@@ -38,15 +40,17 @@ func main() {
 		log.Fatalf("failed to connect to database: %v", err)
 	}
 	db.AutoMigrate(&memberships.User{})
+	db.AutoMigrate(&trackactivities.TrackActivities{})
 	r := gin.Default()
 
 	httpClient := httpclient.NewClent(&http.Client{})
 	spotifyOutbound := spotify.NewSpotifyOutbound(cfg, httpClient)
 
 	membershipsRepo := membershipsRepo.NewRepository(db)
+	trackActivitiesRepo := trackActivitiesRepo.NewRepository(db)
 
 	membershipsSvc := membershipsSvc.NewService(cfg, membershipsRepo)
-	tracksSvc := tracks.NewService(spotifyOutbound)
+	tracksSvc := tracks.NewService(spotifyOutbound, trackActivitiesRepo)
 
 	membershipsHandler := membershipsHandler.NewHandler(r, membershipsSvc)
 	membershipsHandler.RegisterRoutes()
