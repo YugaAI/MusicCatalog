@@ -19,7 +19,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//testing sematic release di golang
+//testing sematic release di golang development
 
 func main() {
 	var (
