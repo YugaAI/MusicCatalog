@@ -34,7 +34,7 @@ release:
     name: MusicCatalog
   footer: |
     ---
-    Released by GoReleaser 🎉
+    Released by GoReleaser
 
 changelog:
   sort: asc
