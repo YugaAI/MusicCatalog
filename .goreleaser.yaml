@@ -1,0 +1,44 @@
+version: 2
+
+project_name: MusicCatalog
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: musiccatalog-build
+    main: ./cmd/main.go
+    binary: musiccatalog
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+
+release:
+  github:
+    owner: YugaAI
+    name: MusicCatalog
+  footer: |
+    ---
+    Released by GoReleaser 🎉
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
