@@ -13,17 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # wajib agar semantic-release bisa membaca semua tag
+          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: "1.22"
-
-      - name: Install GoReleaser
-        uses: goreleaser/goreleaser-action@v5
-        with:
-          version: latest
 
       - name: Install Node.js (Semantic Release)
         uses: actions/setup-node@v4
@@ -40,7 +35,24 @@ jobs:
             @semantic-release/release-notes-generator \
             @semantic-release/github
 
-      - name: Run Release Automation
+      - name: Run semantic-release (auto-version & auto-tag)
+        id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: semantic-release
+
+      - name: "Stop if no new release was created"
+        if: steps.semantic.outputs.new_release_published != 'true'
+        run: echo "No new version created — skipping GoReleaser."
+
+      - name: Set up GoReleaser
+        if: steps.semantic.outputs.new_release_published == 'true'
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          version: latest
+
+      - name: Run GoReleaser (build + upload assets)
+        if: steps.semantic.outputs.new_release_published == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: goreleaser release --clean
