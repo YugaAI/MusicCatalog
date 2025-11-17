@@ -19,6 +19,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//testing sematic release di golang
+
 func main() {
 	var (
 		cfg *configs.Config
