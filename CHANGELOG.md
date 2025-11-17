@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/YugaAI/MusicCatalog/compare/v1.1.2...v1.1.3) (2025-11-17)
+
+
+### Bug Fixes
+
+* menambahkan sematic-release fix test 1 ([1973c40](https://github.com/YugaAI/MusicCatalog/commit/1973c4070dac72539fd53764168023c9ee76c567))
+
 ## [1.1.2](https://github.com/YugaAI/MusicCatalog/compare/v1.1.1...v1.1.2) (2025-11-17)
 
 
