@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/YugaAI/MusicCatalog/compare/v1.2.3...v1.2.4) (2025-12-01)
+
+
+### Bug Fixes
+
+* (bug fix) semantic releases ([c402f37](https://github.com/YugaAI/MusicCatalog/commit/c402f37d8fc36fa84f4851d38ad1fbd6c0cf8fd9))
+
 ## [1.2.3](https://github.com/YugaAI/MusicCatalog/compare/v1.2.2...v1.2.3) (2025-12-01)
 
 ## [1.2.2](https://github.com/YugaAI/MusicCatalog/compare/v1.2.1...v1.2.2) (2025-12-01)
