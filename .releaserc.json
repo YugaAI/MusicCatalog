@@ -1,16 +1,12 @@
 {
-  "branches": ["main"],
+  "branches": [
+    "main"
+  ],
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
       {
         "preset": "conventionalcommits",
-        "releaseRules": [
-          { "type": "bugfix", "release": "patch" },
-          { "type": "update", "release": "minor" },
-          { "type": "refactor", "release": "patch" },
-          { "type": "release", "release": "major" }
-        ],
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
           "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
@@ -18,25 +14,7 @@
         }
       }
     ],
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        "writerOpts": {
-          "types": [
-            { "type": "feat", "section": "Features" },
-            { "type": "fix", "section": "Bug Fixes" },
-            { "type": "refactor", "section": "Refactoring" },
-            { "type": "update", "section": "Updates" },
-            { "type": "bugfix", "section": "Bug Fixes" },
-            { "type": "release", "section": "Releases" }
-          ]
-        },
-        "parserOpts": {
-          "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
-          "headerCorrespondence": ["type", "scope", "subject"]
-        }
-      }
-    ],
+    "@semantic-release/release-notes-generator",
     [
       "@semantic-release/changelog",
       {
