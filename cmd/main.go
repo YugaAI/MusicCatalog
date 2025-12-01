@@ -24,6 +24,7 @@ import (
 //test commit style
 //test commit test
 //test commit chore
+//test commit refactor
 
 func main() {
 	var (

@@ -7,6 +7,9 @@
       "@semantic-release/commit-analyzer",
       {
         "preset": "conventionalcommits",
+        "releaseRules": [
+          { "type": "refactor", "release": "patch" }
+        ],
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
           "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
