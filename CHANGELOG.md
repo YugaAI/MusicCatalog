@@ -1,3 +1,5 @@
+## [1.2.7](https://github.com/YugaAI/MusicCatalog/compare/v1.2.6...v1.2.7) (2025-12-01)
+
 ## [1.2.6](https://github.com/YugaAI/MusicCatalog/compare/v1.2.5...v1.2.6) (2025-12-01)
 
 ## [1.2.5](https://github.com/YugaAI/MusicCatalog/compare/v1.2.4...v1.2.5) (2025-12-01)
