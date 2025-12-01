@@ -22,7 +22,7 @@ import (
 //testing sematic release di golang development custom
 //test commit update
 //test commit refactor
-//test commit test
+//test commit release
 //test commit chore
 
 func main() {
