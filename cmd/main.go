@@ -23,6 +23,7 @@ import (
 //test commit docs
 //test commit style
 //test commit test
+//test commit chore
 
 func main() {
 	var (
