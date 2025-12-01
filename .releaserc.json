@@ -17,7 +17,21 @@
         }
       }
     ],
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "parserOpts": {
+          "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
+          "headerCorrespondence": ["type", "scope", "subject"]
+        },
+        "writerOpts": {
+          "types": [
+            { "type": "refactor", "section": "Refactoring" }
+          ]
+        }
+      }
+    ],
     [
       "@semantic-release/changelog",
       {
