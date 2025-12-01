@@ -8,10 +8,15 @@
       {
         "preset": "conventionalcommits",
         "releaseRules": [
-          { "type": "refactor", "release": "patch" }
+          { "type": "update", "release": "minor" },
+          { "type": "bugfix", "release": "patch" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "release", "release": "major" },
+
+          { "type": "feat", "release": "minor" },
+          { "type": "fix", "release": "patch" }
         ],
         "parserOpts": {
-          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
           "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
           "headerCorrespondence": ["type", "scope", "subject"]
         }
@@ -21,13 +26,14 @@
       "@semantic-release/release-notes-generator",
       {
         "preset": "conventionalcommits",
-        "parserOpts": {
-          "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
-          "headerCorrespondence": ["type", "scope", "subject"]
-        },
         "writerOpts": {
           "types": [
-            { "type": "refactor", "section": "Refactoring" }
+            { "type": "feat", "section": "Features" },
+            { "type": "fix", "section": "Bug Fixes" },
+            { "type": "refactor", "section": "Refactoring" },
+            { "type": "update", "section": "Updates" },
+            { "type": "bugfix", "section": "Bug Fixes" },
+            { "type": "release", "section": "Releases" }
           ]
         }
       }
