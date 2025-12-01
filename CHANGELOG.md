@@ -1,3 +1,17 @@
+## [2.0.0](https://github.com/YugaAI/MusicCatalog/compare/v1.2.8...v2.0.0) (2025-12-01)
+
+### Refactoring
+
+* test refactor changelog ([f966c23](https://github.com/YugaAI/MusicCatalog/commit/f966c239565dd2114ca3453be72fad8394e85ee3))
+
+### Updates
+
+* test update changelog ([0cea43d](https://github.com/YugaAI/MusicCatalog/commit/0cea43d320cb3fc4b99fee750d58f766b115089b))
+
+### Releases
+
+* test release changelog ([3328a84](https://github.com/YugaAI/MusicCatalog/commit/3328a847c2c84e55248901dbf804569491d8a75e))
+
 ## [1.2.8](https://github.com/YugaAI/MusicCatalog/compare/v1.2.7...v1.2.8) (2025-12-01)
 
 ### Bug Fixes
