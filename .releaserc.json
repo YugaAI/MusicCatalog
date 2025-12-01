@@ -6,10 +6,10 @@
       {
         "preset": "conventionalcommits",
         "releaseRules": [
-          { "type": "bugfix", "release": "patch" },
-          { "type": "update", "release": "minor" },
-          { "type": "refactor", "release": "patch" },
-          { "type": "release", "release": "major" }
+          { "type": "bugfix", "section": "patch" },
+          { "type": "update", "section": "minor" },
+          { "type": "refactor", "section": "patch" },
+          { "type": "release", "section": "major" }
         ],
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
