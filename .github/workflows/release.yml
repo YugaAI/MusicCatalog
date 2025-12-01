@@ -36,6 +36,7 @@ jobs:
             @semantic-release/exec \
             @semantic-release/release-notes-generator \
             @semantic-release/github
+            conventional-changelog-conventionalcommits
 
       - name: Run semantic-release (auto-version & auto-tag)
         id: semantic
