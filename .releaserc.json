@@ -6,10 +6,10 @@
       {
         "preset": "conventionalcommits",
         "releaseRules": [
-          { "type": "bugfix", "section": "patch" },
-          { "type": "update", "section": "minor" },
-          { "type": "refactor", "section": "patch" },
-          { "type": "release", "section": "major" }
+          { "type": "bugfix", "release": "patch" },
+          { "type": "update", "release": "minor" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "release", "release": "major" }
         ],
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
@@ -22,6 +22,16 @@
       "@semantic-release/release-notes-generator",
       {
         "preset": "conventionalcommits",
+        "writerOpts": {
+          "types": [
+            { "type": "feat", "section": "Features" },
+            { "type": "fix", "section": "Bug Fixes" },
+            { "type": "refactor", "section": "Refactoring" },
+            { "type": "update", "section": "Updates" },
+            { "type": "bugfix", "section": "Bug Fixes" },
+            { "type": "release", "section": "Releases" }
+          ]
+        },
         "parserOpts": {
           "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
           "headerCorrespondence": ["type", "scope", "subject"]
