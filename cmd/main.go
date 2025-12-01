@@ -21,10 +21,9 @@ import (
 
 //testing sematic release di golang development custom
 //test commit update
-//test commit style
+//test commit refactor
 //test commit test
 //test commit chore
-//test commit refactor
 
 func main() {
 	var (
