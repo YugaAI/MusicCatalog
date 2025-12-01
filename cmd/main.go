@@ -20,7 +20,7 @@ import (
 )
 
 //testing sematic release di golang development custom
-//test commit docs
+//test commit update
 //test commit style
 //test commit test
 //test commit chore
