@@ -21,7 +21,6 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset": "conventionalcommits",
         "writerOpts": {
           "types": [
             { "type": "feat", "section": "Features" },
