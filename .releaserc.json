@@ -5,17 +5,17 @@
       "@semantic-release/commit-analyzer",
       {
         "preset": "conventionalcommits",
+        "releaseRules": [
+          { "type": "bugfix", "release": "patch" },
+          { "type": "update", "release": "minor" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "release", "release": "major" }
+        ],
         "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES"],
           "headerPattern": "^([a-zA-Z]+)(?:\\((.*)\\))?: (.*)$",
           "headerCorrespondence": ["type", "scope", "subject"]
-        },
-        "releaseRules": [
-          { "type": "update", "release": "minor" },
-          { "type": "bugfix", "release": "patch" },
-          { "type": "refactor", "release": "patch" },
-          { "type": "release", "release": "major" },
-          { "breaking": true, "release": "major" }
-        ]
+        }
       }
     ],
     [
