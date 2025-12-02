@@ -23,7 +23,7 @@ import (
 //test commit update
 //test commit refactor
 //test commit release
-//test commit chore
+//test commit style
 
 func main() {
 	var (
