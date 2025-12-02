@@ -1,3 +1,21 @@
+## [2.0.2](https://github.com/YugaAI/MusicCatalog/compare/v2.0.1...v2.0.2) (2025-12-02)
+
+### Code Style
+
+* test style changelog ([dec0267](https://github.com/YugaAI/MusicCatalog/commit/dec02676f2b012804b02485e19af63860c379ca4))
+
+### Chores
+
+* test chore changelog ([cabd437](https://github.com/YugaAI/MusicCatalog/commit/cabd43714da0fc0ea3d97a581c6ea9be1d1e36ec))
+
+### Tests
+
+* test test changelog ([a664b74](https://github.com/YugaAI/MusicCatalog/commit/a664b74ca560111b5d1eeb833be296f77b39ba0f))
+
+### CI/CD
+
+* test CI changelog ([16cb15a](https://github.com/YugaAI/MusicCatalog/commit/16cb15a1ba307a2e0924634e3e36f4b741d0e15a))
+
 ## [2.0.1](https://github.com/YugaAI/MusicCatalog/compare/v2.0.0...v2.0.1) (2025-12-02)
 
 ### Documentation
