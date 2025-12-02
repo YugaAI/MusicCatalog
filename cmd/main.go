@@ -23,7 +23,10 @@ import (
 //test commit update
 //test commit refactor
 //test commit release
+//test commit style
 //test commit chore
+//test commit test
+//test commit CI
 
 func main() {
 	var (
